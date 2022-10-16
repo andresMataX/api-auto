@@ -9,7 +9,6 @@ const router = Router();
 router.post('/', [
   check('nombre', 'El Nombre es obligatorio').not().isEmpty(),
   check('matricula', 'La Matrícula es obligatoria').not().isEmpty(),
-  check('registro', 'La Fecha de registro es obligatoria').not().isEmpty(),
   check('evento', 'No es un ID válido').isMongoId(),
   check('evento').custom(existeEvento),
   validarCampos
