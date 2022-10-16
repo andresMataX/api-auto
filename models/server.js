@@ -10,8 +10,9 @@ class Server {
     this.port = process.env.PORT;
 
     this.paths = {
-      eventos: '/api/eventos',
       asistentes: '/api/asistentes',
+      buscar: '/api/buscar',
+      eventos: '/api/eventos',
     }
 
     this.conectarDB();
@@ -35,8 +36,9 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.paths.eventos, require('../routes/eventos.routes'));
     this.app.use(this.paths.asistentes, require('../routes/asistentes.routes'));
+    this.app.use(this.paths.buscar, require('../routes/buscar.routes'));
+    this.app.use(this.paths.eventos, require('../routes/eventos.routes'));
   }
 
   listen() {
