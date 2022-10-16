@@ -1,5 +1,7 @@
 const express = require('express');
-var cors = require('cors');
+const cors = require('cors');
+
+const dbConnection = require('../database/config.db');
 
 class Server {
 
@@ -11,20 +13,24 @@ class Server {
       eventos: '/api/eventos',
     }
 
+    this.conectarDB();
+
     this.middlewares();
 
     this.routes();
   }
 
+  async conectarDB() { await dbConnection(); }
+
   middlewares() {
     // CORS
-    this.app.use(cors())
+    this.app.use(cors());
 
     // Lectura y parseo del body
     this.app.use(express.json());
 
     // Directorio público
-    this.app.use(express.static('public'))
+    this.app.use(express.static('public'));
   }
 
   routes() {
