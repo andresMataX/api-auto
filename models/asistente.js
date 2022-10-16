@@ -13,6 +13,11 @@ const AsistenteSchema = Schema({
   registro: {
     type: Date,
     required: [true, 'La hora de registro es obligatoria'],
+  },
+  evento: {
+    type: Schema.Types.ObjectId,
+    ref: 'Evento',
+    required: [true, 'El ID del evento es obligatorio'],
   }
 })
 
