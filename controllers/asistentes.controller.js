@@ -2,6 +2,14 @@ const { response } = require('express');
 
 const Asistente = require('../models/asistente');
 
+const obtenerAsistentes = async (req, res = response) => {
+
+  const asistentes = await Asistente.find()
+    .populate('evento', 'nombre');
+
+  res.json({ asistentes });
+}
+
 const crearAsistente = async (req, res = response) => {
 
   const { nombre, matricula, evento } = req.body;
@@ -31,4 +39,5 @@ const crearAsistente = async (req, res = response) => {
 
 module.exports = {
   crearAsistente,
+  obtenerAsistentes,
 }

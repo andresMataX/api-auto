@@ -1,10 +1,12 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { crearAsistente } = require('../controllers/asistentes.controller');
+const { crearAsistente, obtenerAsistentes } = require('../controllers/asistentes.controller');
 const { existeEvento } = require('../helpers/db-validators');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = Router();
+
+router.get('/', obtenerAsistentes);
 
 router.post('/', [
   check('nombre', 'El Nombre es obligatorio').not().isEmpty(),
