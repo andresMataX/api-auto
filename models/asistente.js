@@ -21,5 +21,13 @@ const AsistenteSchema = Schema({
   }
 })
 
+AsistenteSchema.methods.toJSON = function () {
+  const { __v, _id, ...asistente } = this.toObject();
+  asistente.uid = _id;
+  return {
+    asistente,
+  };
+}
+
 
 module.exports = model('Asistente', AsistenteSchema);
