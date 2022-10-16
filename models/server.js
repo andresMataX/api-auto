@@ -28,7 +28,7 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.paths.eventos, require('../routes/alumnos.routes'));
+    this.app.use(this.paths.eventos, require('../routes/eventos.routes'));
   }
 
   listen() {
