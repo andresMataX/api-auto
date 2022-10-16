@@ -6,7 +6,7 @@ const obtenerEventos = async (req, res = response) => {
 
   const eventos = await Evento.find();
 
-  res.json(eventos);
+  res.json({ eventos });
 }
 
 const crearEvento = async (req, res = response) => {
@@ -34,7 +34,21 @@ const crearEvento = async (req, res = response) => {
   res.status(201).json(evento);
 }
 
+const actualizarEvento = async (req, res = response) => {
+
+  const id = req.params.id;
+
+  let { asistencia, ...resto } = await Evento.findById(id);
+
+  asistencia = asistencia + 1;
+
+  const evento = await Evento.findByIdAndUpdate(id, { asistencia }, { new: true });
+
+  res.json(evento);
+}
+
 module.exports = {
   obtenerEventos,
-  crearEvento
+  crearEvento,
+  actualizarEvento,
 }
