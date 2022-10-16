@@ -15,7 +15,6 @@ const buscar = async (req, res = response) => {
   eventos.map((evento) => {
     idEventos.push(evento._id.toString());
   });
-  console.log(idEventos);
 
   const asistentes = await Asistente.find({ evento: idEventos[0] });
 
