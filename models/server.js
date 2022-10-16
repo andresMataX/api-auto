@@ -11,6 +11,7 @@ class Server {
 
     this.paths = {
       eventos: '/api/eventos',
+      asistentes: '/api/asistentes',
     }
 
     this.conectarDB();
@@ -35,6 +36,7 @@ class Server {
 
   routes() {
     this.app.use(this.paths.eventos, require('../routes/eventos.routes'));
+    this.app.use(this.paths.asistentes, require('../routes/asistentes.routes'));
   }
 
   listen() {
