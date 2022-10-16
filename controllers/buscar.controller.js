@@ -1,6 +1,5 @@
 const { response } = require("express");
 const Asistente = require("../models/asistente");
-const { ObjectId } = require("mongoose").Types;
 
 const Evento = require('../models/evento');
 
