@@ -11,13 +11,14 @@ const obtenerEventos = async (req, res = response) => {
 
 const crearEvento = async (req, res = response) => {
 
-  const { nombre, fecha } = req.body;
+  const nombre = req.body.nombre.toUpperCase();
+  const fecha = req.body.fecha.toUpperCase();
 
   const eventoDB = await Evento.findOne({ nombre });
 
   if (eventoDB) {
     return res.status(400).json({
-      msg: `El Evento ${categoriaDB.nombre}, ya existe.`
+      msg: `El Evento ${eventoDB.nombre}, ya existe.`
     })
   }
 
