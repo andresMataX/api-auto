@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { obtenerEventos, crearEvento, actualizarEvento } = require('../controllers/eventos.controller');
+const { existeEvento } = require('../helpers/db-validators');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = Router();
@@ -15,7 +16,7 @@ router.post('/', [
 
 router.put('/:id', [
   check('id', 'No es un ID válido').isMongoId(),
-  // TODO: Custom
+  check('id').custom(existeEvento),
   check('asistencia', 'El número actualizado de asistentes es obligatorio.'),
   validarCampos
 ], actualizarEvento);
