@@ -1,12 +1,9 @@
 const { Router, response } = require('express');
+const { obtenerEventos } = require('../controllers/eventos.controller');
 
 const router = Router();
 
-router.get('/', (req, res = response) => {
-  res.json({
-    msg: 'get - eventos'
-  })
-});
+router.get('/', obtenerEventos);
 
 
 module.exports = router;
