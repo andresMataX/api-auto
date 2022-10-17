@@ -8,7 +8,7 @@ const tablaBody = document.getElementById('tbody');
 
 const obtenerEvento = async (termino = 'a') => {
 
-  const resp = await fetch(`http://localhost:8080/api/buscar/${termino}`);
+  const resp = await fetch(`https://api-auto-eq2.herokuapp.com/api/buscar/${termino}`);
   const { results_eventos, results_asistentes } = await resp.json();
 
   inputNombre.value = results_eventos[0].evento.nombre;
