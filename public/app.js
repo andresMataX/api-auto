@@ -37,8 +37,8 @@ const obtenerEvento = async (termino = 'a') => {
       `
       <tr class="text-center">
         <td>${++index}</td>
-        <td>${asistente.nombre}</td>
         <td>${asistente.matricula}</td>
+        <td>${asistente.nombre}</td>
         <td>${horaIngreso.toLocaleTimeString()}</td>
       </tr>
     `;
